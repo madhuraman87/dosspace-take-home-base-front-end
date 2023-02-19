@@ -95,7 +95,11 @@ export default function WorkSpace() {
       </div>
 
       {workspace?.['buildShipments'].map((build) => (
-        <div key={build.id} className="WorkspaceList__workspaceCard">
+        <div
+          data-testid="build-shipments-card"
+          key={build.id}
+          className="WorkspaceList__workspaceCard"
+        >
           <div className="WorkspaceList__buildNumberPanel">
             Build Number: #{build.buildNumber}
             <div
@@ -105,6 +109,7 @@ export default function WorkSpace() {
                   state: { workspace, build },
                 })
               }
+              data-testid="view-build-shipments"
             >
               <VscChevronRight style={{ marginRight: '5px' }} />
             </div>

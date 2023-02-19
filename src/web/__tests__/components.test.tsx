@@ -1,14 +1,15 @@
-import React from 'react'
 import '@testing-library/jest-dom'
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, within } from '@testing-library/react'
 import WorkspaceList from '../components/WorkspaceList'
 import DosspaceApi from '../api'
 import userEvent from '@testing-library/user-event'
+import Workspace from '../components/Workspace'
+import BuildShipment from '../components/BuildShipments'
 
-const mockedUsedNavigate = jest.fn()
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
+  useNavigate: () => jest.fn(),
+  useLocation: () => jest.fn(),
 }))
 
 const dummyData = [
@@ -92,6 +93,7 @@ describe('App', () => {
   beforeEach(() => {
     // assign the mock jest.fn() to static method
     DosspaceApi.getWorkspaces = jest.fn().mockReturnValue(dummyData)
+    DosspaceApi.getWorkspace = jest.fn().mockReturnValue(dummyData[0])
   })
 
   test('loads and displays WorkspaceList', async () => {
@@ -113,5 +115,24 @@ describe('App', () => {
 
     // expect result
     await screen.findByTestId('workspace-header')
+  })
+
+  test(`should render build cards`, async () => {
+    await act(async () => render(<Workspace />))
+    expect(screen.getAllByTestId('build-shipments-card')).toHaveLength(1)
+    const ViewBuildCard = screen.queryAllByTestId('build-shipments-card')[0]
+    const ViewBuildCardButton = within(ViewBuildCard).getByTestId('view-build-shipments')
+    userEvent.click(ViewBuildCardButton)
+    expect(DosspaceApi.getWorkspace).toHaveBeenCalled()
+  })
+
+  test(`should render table when clicking on build`, async () => {
+    await act(async () => render(<BuildShipment />))
+    expect(DosspaceApi.getWorkspace).toHaveBeenCalled()
+    expect(screen.getAllByTestId('add-new-row')).toHaveLength(1)
+    const { getByText } = within(screen.getByTestId('shipment-table'))
+    expect(getByText('Order Number')).toBeInTheDocument()
+    expect(getByText('Description')).toBeInTheDocument()
+    expect(getByText('Cost')).toBeInTheDocument()
   })
 })

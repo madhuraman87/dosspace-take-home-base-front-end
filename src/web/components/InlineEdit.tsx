@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 import '../style/WorkspaceList.css'
 
+/** Inline Edit of the Titles */
 export default function InlineEdit({
   childRef,
   text,

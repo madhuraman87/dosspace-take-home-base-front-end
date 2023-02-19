@@ -21,3 +21,16 @@ This project contains a frontend and backend, with data stored in a JSON file.
 To run prettier, run `yarn prettier`.
 To run eslint, run `yarn eslint`.
 To run tests, run `yarn test --watchAll=false`.
+
+# UI Flow
+
+1. Open `localhost:3000/`.
+2. Displays a list of Workspaces as cards with `chevronRight` icon acting as CTA to Workspace dashboard.
+3. Clicking `Create Workspace` button will display a input element with add button. Entering the title and clicking on `Add` will create a new workspace and append the created workspace to the list.
+4. Clicking on the `chevronRight` icon will take you to workspace dashboard which in turn lists down the builds associated in that workspace.
+5. `Inline editing` is enabled on this page for the Workspace title which will enable user to edit Workspace title.
+6. Clicking `Create Build` button will display a input element with add button. Entering the build number and clicking on `Add` will create a new build with dummy shipment and append the created build to the list.
+7. Clicking on the `chevronRight` icon will take you to shipment dashboard which displays all the shipments associated with that particular build in a tabular format.
+8. `Add new Row` button will add a new shipment record to the table.
+9. `Inline editing` is enabled on this page for the Build Number title which will enable user to edit Build Number inplace.
+10. `Back` CTA on each page facilitates going back to previous page.

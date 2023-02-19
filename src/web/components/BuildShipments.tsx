@@ -146,8 +146,13 @@ export default function BuildShipment() {
         </InlineEdit>
       </div>
       <div className="WorkspaceList__workspaceCard">
-        <button onClick={() => gridApi?.applyTransaction({ add: [inputRow] })}>Add a row</button>
-        <div key={buildId} className="UpperWrapper">
+        <button
+          data-testid="add-new-row"
+          onClick={() => gridApi?.applyTransaction({ add: [inputRow] })}
+        >
+          Add a row
+        </button>
+        <div key={buildId} data-testid="shipment-table" className="UpperWrapper">
           <div className="TableWrapper ag-theme-alpine">
             <AgGridReact
               onGridReady={(grid: GridReadyEvent) => {
