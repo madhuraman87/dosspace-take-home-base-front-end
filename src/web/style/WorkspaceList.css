@@ -1,0 +1,72 @@
+.WorkspaceList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.WorkspaceList__headerbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 16px;
+  width: 100%;
+}
+
+.WorkspaceList__header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.WorkspaceList__workspaceCard {
+  color: black;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.WorkspaceList__createButton {
+  border-radius: 100px;
+  padding: 5px;
+  height: 40px;
+  width: 150px;
+  cursor: pointer;
+  background: transparent;
+  font-weight: bold;
+}
+
+.WorkspaceList__button {
+  padding: 5px;
+  margin: 0 10px;
+  border-radius: 100px;
+  height: 40px;
+  width: 80px;
+  cursor: pointer;
+}
+
+input[type='text'] {
+  height: 40px;
+  width: 200px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.WorkspaceList__iconButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.WorkspaceList__buildNumberPanel {
+  border-radius: 20px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  position: relative;
+  padding: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
